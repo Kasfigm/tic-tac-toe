@@ -93,12 +93,11 @@ function checkWinner() {
 }
 
 function updateScore() {
-    scoreOText.style.display = "block";
-
     if (mode === "ai") {
         scoreXText.textContent = "Poin X: " + scoreX;
-        scoreOText.textContent = "Poin AI: " + scoreO;
+        scoreOText.style.display = "none"; // sembunyikan poin AI
     } else {
+        scoreOText.style.display = "block";
         scoreXText.textContent = "Poin X: " + scoreX;
         scoreOText.textContent = "Poin O: " + scoreO;
     }
