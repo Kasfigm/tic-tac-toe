@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu - Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="menu">
+        <h1>Tic Tac Toe</h1>
+        <button onclick="startGame('player')">2 Player</button>
+        <button onclick="startGame('ai')">Vs AI</button>
+    </div>
+
+    <script>
+        function startGame(mode) {
+            // Simpan mode ke localStorage
+            localStorage.setItem("mode", mode);
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>
