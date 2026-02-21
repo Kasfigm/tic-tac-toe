@@ -18,7 +18,6 @@ const winConditions = [
 ];
 
 statusText.textContent = "Giliran Pemain X";
-
 updateScore();
 
 cells.forEach(cell => {
@@ -65,22 +64,34 @@ function checkWinner() {
     });
 
     if (winner) {
-        gameActive = false;
 
-        if (winner === "X") {
-            scoreX++;
+        if (mode === "ai") {
+            // Mode AI → hanya Player X dapat skor
+            if (winner === "X") {
+                scoreX++;
+            }
         } else {
-            scoreO++;
+            // Mode 2 Player
+            if (winner === "X") {
+                scoreX++;
+            } else {
+                scoreO++;
+            }
         }
 
         updateScore();
-        statusText.textContent = winner + " Menang!";
+
+        setTimeout(() => {
+            resetGame();
+        }, 800);
+
         return;
     }
 
     if (!board.includes("")) {
-        statusText.textContent = "Seri!";
-        gameActive = false;
+        setTimeout(() => {
+            resetGame();
+        }, 800);
         return;
     }
 
@@ -91,7 +102,7 @@ function checkWinner() {
 function updateScore() {
     if (mode === "ai") {
         scoreXText.textContent = "Player (X): " + scoreX;
-        scoreOText.textContent = "AI (O): " + scoreO;
+        scoreOText.textContent = "AI (O): -";
     } else {
         scoreXText.textContent = "Player X: " + scoreX;
         scoreOText.textContent = "Player O: " + scoreO;
