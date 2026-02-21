@@ -19,6 +19,8 @@ const winConditions = [
 
 statusText.textContent = "Giliran Pemain X";
 
+updateScore();
+
 cells.forEach(cell => {
     cell.addEventListener("click", handleClick);
 });
@@ -31,7 +33,7 @@ function handleClick() {
     makeMove(index, currentPlayer);
 
     if (mode === "ai" && gameActive && currentPlayer === "O") {
-        setTimeout(aiMove, 500);
+        setTimeout(aiMove, 400);
     }
 }
 
