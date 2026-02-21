@@ -66,12 +66,10 @@ function checkWinner() {
     if (winner) {
 
         if (mode === "ai") {
-            // Mode AI → hanya Player X dapat skor
             if (winner === "X") {
                 scoreX++;
             }
         } else {
-            // Mode 2 Player
             if (winner === "X") {
                 scoreX++;
             } else {
@@ -102,8 +100,9 @@ function checkWinner() {
 function updateScore() {
     if (mode === "ai") {
         scoreXText.textContent = "Player (X): " + scoreX;
-        scoreOText.textContent = "AI (O): -";
+        scoreOText.style.display = "none";
     } else {
+        scoreOText.style.display = "block";
         scoreXText.textContent = "Player X: " + scoreX;
         scoreOText.textContent = "Player O: " + scoreO;
     }
@@ -115,7 +114,7 @@ function resetGame() {
     currentPlayer = "X";
     statusText.textContent = "Giliran Pemain X";
 
-    cells.forEach(cell => cell.textContent = "");updateScore();
+    cells.forEach(cell => cell.textContent = "");
 }
 
 function backToMenu() {
