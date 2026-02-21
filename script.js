@@ -115,7 +115,7 @@ function resetGame() {
     currentPlayer = "X";
     statusText.textContent = "Giliran Pemain X";
 
-    cells.forEach(cell => cell.textContent = "");
+    cells.forEach(cell => cell.textContent = "");updateScore();
 }
 
 function backToMenu() {
