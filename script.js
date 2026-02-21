@@ -1,10 +1,15 @@
 const cells = document.querySelectorAll(".cell");
 const statusText = document.getElementById("status");
+const scoreXText = document.getElementById("scoreX");
+const scoreOText = document.getElementById("scoreO");
 
 let currentPlayer = "X";
 let gameActive = true;
 let board = ["", "", "", "", "", "", "", "", ""];
 let mode = localStorage.getItem("mode") || "player";
+
+let scoreX = 0;
+let scoreO = 0;
 
 const winConditions = [
     [0,1,2],[3,4,5],[6,7,8],
@@ -12,7 +17,7 @@ const winConditions = [
     [0,4,8],[2,4,6]
 ];
 
-statusText.textContent = "Giliran Pemain " + currentPlayer;
+statusText.textContent = "Giliran Pemain X";
 
 cells.forEach(cell => {
     cell.addEventListener("click", handleClick);
@@ -58,8 +63,16 @@ function checkWinner() {
     });
 
     if (winner) {
-        statusText.textContent = "Pemain " + winner + " Menang!";
         gameActive = false;
+
+        if (winner === "X") {
+            scoreX++;
+        } else {
+            scoreO++;
+        }
+
+        updateScore();
+        statusText.textContent = winner + " Menang!";
         return;
     }
 
@@ -73,11 +86,21 @@ function checkWinner() {
     statusText.textContent = "Giliran Pemain " + currentPlayer;
 }
 
+function updateScore() {
+    if (mode === "ai") {
+        scoreXText.textContent = "Player (X): " + scoreX;
+        scoreOText.textContent = "AI (O): " + scoreO;
+    } else {
+        scoreXText.textContent = "Player X: " + scoreX;
+        scoreOText.textContent = "Player O: " + scoreO;
+    }
+}
+
 function resetGame() {
     board = ["", "", "", "", "", "", "", "", ""];
     gameActive = true;
     currentPlayer = "X";
-    statusText.textContent = "Giliran Pemain " + currentPlayer;
+    statusText.textContent = "Giliran Pemain X";
 
     cells.forEach(cell => cell.textContent = "");
 }
