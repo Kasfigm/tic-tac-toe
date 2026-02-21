@@ -65,16 +65,11 @@ function checkWinner() {
 
     if (winner) {
 
-        if (mode === "ai") {
-            if (winner === "X") {
-                scoreX++;
-            }
+        // Semua mode dapat poin
+        if (winner === "X") {
+            scoreX++;
         } else {
-            if (winner === "X") {
-                scoreX++;
-            } else {
-                scoreO++;
-            }
+            scoreO++;
         }
 
         updateScore();
@@ -98,11 +93,12 @@ function checkWinner() {
 }
 
 function updateScore() {
+    scoreOText.style.display = "block";
+
     if (mode === "ai") {
         scoreXText.textContent = "Player (X): " + scoreX;
-        scoreOText.style.display = "none";
+        scoreOText.textContent = "AI (O): " + scoreO;
     } else {
-        scoreOText.style.display = "block";
         scoreXText.textContent = "Player X: " + scoreX;
         scoreOText.textContent = "Player O: " + scoreO;
     }
