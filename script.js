@@ -83,5 +83,5 @@ function resetGame() {
 }
 
 function backToMenu() {
-    window.location.href = "menu.html";
+    window.location.href = "index.html";
 }
