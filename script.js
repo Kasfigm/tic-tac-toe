@@ -96,11 +96,11 @@ function updateScore() {
     scoreOText.style.display = "block";
 
     if (mode === "ai") {
-        scoreXText.textContent = "POIN: " + scoreX;
-        scoreOText.textContent = "AI (O): " + scoreO;
+        scoreXText.textContent = "Poin X: " + scoreX;
+        scoreOText.textContent = "Poin AI: " + scoreO;
     } else {
-        scoreXText.textContent = "Player X: " + scoreX;
-        scoreOText.textContent = "Player O: " + scoreO;
+        scoreXText.textContent = "Poin X: " + scoreX;
+        scoreOText.textContent = "Poin O: " + scoreO;
     }
 }
 
